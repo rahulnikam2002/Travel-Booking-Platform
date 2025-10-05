@@ -1,0 +1,21 @@
+.checkboxInfoList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.expandButton {
+    background: transparent;
+    border: none;
+    color: #0070f3;
+    cursor: pointer;
+    padding: 6px 0;
+    text-align: left;
+    user-select: none;
+}
+
+.toggle {
+    color: #0070f3;
+    cursor: pointer;
+    padding: 6px 0;
+}

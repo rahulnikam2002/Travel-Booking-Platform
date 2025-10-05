@@ -1,17 +1,17 @@
 import ButtonExamples from "./components/Button/Button.simple";
-// import CheckboxInfoList from "./components/CheckboxInfoList";
+import CheckboxInfoList from "./components/CheckboxInfoList";
 import { CheckboxInfoRow } from "./components/CheckboxInfoRow/CheckboxInfoRow";
 import { ExpandTab } from "./components/ExpandTab/ExpandTab";
 import styles from "./styles.module.css"
 
-// const dummyDataForCheckboxInfoList = [
-//   { title: 'Non Stop', description: '$ 100', isChecked: false },
-//   { title: '1 Stop', description: '$ 80', isChecked: true },
-//   { title: '2+ Stops', description: '$ 50', isChecked: false },
-//   { title: 'Red Eye Flights', description: '$ 120', isChecked: false },
-//   { title: 'Early Morning Flights', description: '$ 110', isChecked: true },
-//   { title: 'Late Night Flights', description: '$ 90', isChecked: false },
-// ];
+const dummyDataForCheckboxInfoList = [
+  { title: 'Non Stop', description: '$ 100', isChecked: false },
+  { title: '1 Stop', description: '$ 80', isChecked: true },
+  { title: '2+ Stops', description: '$ 50', isChecked: false },
+  { title: 'Red Eye Flights', description: '$ 120', isChecked: false },
+  { title: 'Early Morning Flights', description: '$ 110', isChecked: true },
+  { title: 'Late Night Flights', description: '$ 90', isChecked: false },
+];
 
 function App() {
   return (
@@ -33,7 +33,7 @@ function App() {
 
           <div className={styles.spacer}>
             <h2>Checkbox Info List</h2>
-            {/* <CheckboxInfoList items={dummyDataForCheckboxInfoList} isExpandable={true} minItemsToShow={3} /> */}
+            <CheckboxInfoList items={dummyDataForCheckboxInfoList} isExpandable={true} minItemsToShow={3} />
           </div>
         </ExpandTab>
       </div>
