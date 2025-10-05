@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { ModuleFederationPlugin } = require("webpack").container;
+const webpack = require("webpack");
 const path = require("path");
 const deps = require("./package.json").dependencies;
 
@@ -9,9 +10,20 @@ module.exports = {
     devServer: {
         port: 3001,
         open: true,
-        hot: false,
-        liveReload: true,
+        hot: true,
+        liveReload: false,
         historyApiFallback: true,
+        static: {
+            directory: path.join(__dirname, 'public'),
+            publicPath: '/',
+        },
+        watchFiles: {
+            paths: ["src/**/*", "public/**/*"],
+            options: {
+                usePolling: false,
+                ignored: /node_modules/,
+            },
+        },
         headers: {
             "Access-Control-Allow-Origin": "*",
         },
@@ -19,11 +31,24 @@ module.exports = {
             overlay: {
                 errors: true,
                 warnings: false,
+                runtimeErrors: false,
             },
+            webSocketURL: "ws://localhost:3001/ws",
+        },
+        devMiddleware: {
+            writeToDisk: false,
         },
     },
     resolve: {
         extensions: [".ts", ".tsx", ".js", ".jsx"],
+    },
+    cache: {
+        type: 'filesystem',
+    },
+    watchOptions: {
+        aggregateTimeout: 300,
+        poll: 1000,
+        ignored: ['**/node_modules', '**/dist'],
     },
     module: {
         rules: [
@@ -41,7 +66,6 @@ module.exports = {
                     {
                         loader: "css-loader",
                         options: {
-                            esModule: false,
                             modules: true,
                         },
                     },
@@ -51,7 +75,25 @@ module.exports = {
             {
                 test: /\.css$/,
                 exclude: /\.module\.css$/,
-                use: ["style-loader", "css-loader"],
+                use: [
+                    "style-loader",
+                    {
+                        loader: "css-loader",
+                        options: {
+                            sourceMap: true,
+                        },
+                    },
+                ],
+            },
+            // Images and SVG
+            {
+                test: /\.(png|jpe?g|gif|svg)$/i,
+                type: 'asset/resource',
+            },
+            // Other assets
+            {
+                test: /\.(woff|woff2|eot|ttf|otf)$/i,
+                type: 'asset/resource',
             },
         ],
     },
@@ -77,6 +119,10 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             template: "./public/index.html",
+            templateParameters: {
+                PUBLIC_URL: "",
+            },
+            minify: false,
         }),
     ],
     output: {

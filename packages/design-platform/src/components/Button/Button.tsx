@@ -1,25 +1,6 @@
 import React from "react";
 import styles from "./button.module.css"
-
-export type ButtonProps = {
-    // Content
-    title?: string;
-    children?: React.ReactNode;
-
-    // Basic styling
-    isSquare?: boolean; // true = square, false = rounded
-    size?: 'small' | 'medium' | 'large';
-    type?: 'filled' | 'outlined' | 'text';
-    color?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning';
-
-    // Icons (simple left/right support)
-    leftIcon?: React.ReactNode;
-    rightIcon?: React.ReactNode;
-
-    // Basic props
-    disabled?: boolean;
-    onClick?: () => void;
-};
+import type { ButtonProps } from "./Button.types";
 
 export const Button = (props: ButtonProps) => {
     const {

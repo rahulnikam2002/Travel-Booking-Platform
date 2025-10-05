@@ -1,0 +1,11 @@
+.expandTab {
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--color-primary);
+    padding: 10px 10px;
+    color: #fff;
+    text-align: left;
+    cursor: pointer;
+    font-family: var(--font-family);
+}

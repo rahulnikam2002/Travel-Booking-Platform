@@ -14,8 +14,6 @@ export const ButtonExamples = () => {
 
     return (
         <div style={{ padding: '20px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
-            <h2>Simple Button Examples</h2>
-
             {/* Basic Usage */}
             <section>
                 <h3>Basic Usage</h3>
