@@ -29,7 +29,9 @@ export const CheckboxInfoList = (props: CheckboxInfoListProps) => {
             const copy = prev.map((it) => ({ ...it }));
             if (typeof copy[index] !== 'undefined') copy[index].isChecked = checked;
             // notify parent if provided
-            onChange?.(copy.map((c) => ({ ...c })));
+            // 'copy' is already a shallow-cloned array with cloned items, so we can
+            // pass it directly to the callback to avoid an extra allocation.
+            onChange?.(copy);
             return copy;
         });
     };
@@ -47,7 +49,12 @@ export const CheckboxInfoList = (props: CheckboxInfoListProps) => {
             ))}
 
             {isExpandable && internalItems.length > minItemsToShow && (
-                <button className={styles.expandButton} onClick={toggleExpand}>
+                <button
+                    type="button"
+                    aria-expanded={expanded}
+                    className={styles.expandButton}
+                    onClick={toggleExpand}
+                >
                     {expanded ? 'Show less' : `+${hiddenCount} more`}
                 </button>
             )}

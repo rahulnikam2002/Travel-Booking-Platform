@@ -1,4 +1,4 @@
-type SingleCheckboxInfo = {
+export type SingleCheckboxInfo = {
     title: string;
     description?: string;
     isChecked: boolean;
