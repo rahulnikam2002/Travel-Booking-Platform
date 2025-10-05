@@ -4,10 +4,12 @@ import styles from './expandTab.module.css';
 
 export const ExpandTab = (props: ExpandTabProps) => {
     const { children, opened } = props;
-    const [isOpen, setIsOpen] = useState(false);
+    // Initialize from `opened` to avoid an initial flicker when parent wants it opened on first render
+    const [isOpen, setIsOpen] = useState<boolean>(() => opened ?? false);
 
     const toggleOpen = () => {
-        setIsOpen(!isOpen);
+        // Use functional updater to avoid stale closures
+        setIsOpen(prev => !prev);
     };
 
     useEffect(() => {

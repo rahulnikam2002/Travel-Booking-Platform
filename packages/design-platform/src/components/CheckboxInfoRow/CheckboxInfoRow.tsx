@@ -8,13 +8,15 @@ export const CheckboxInfoRow = (props: CheckboxInfoRowProps) => {
 
     // Keep internal state in sync when parent changes `isChecked` prop
     useEffect(() => {
-        if (typeof isChecked === 'boolean') setIsCheckboxChecked(isChecked);
+        setIsCheckboxChecked(isChecked);
     }, [isChecked]);
 
     const toggle = () => {
-        const next = !isCheckboxChecked;
-        setIsCheckboxChecked(next);
-        if (onChange) onChange(next);
+        setIsCheckboxChecked(prev => {
+            const next = !prev;
+            onChange(next);
+            return next;
+        });
     };
 
     return (
