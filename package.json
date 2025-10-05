@@ -1,0 +1,19 @@
+{
+  "name": "my-monorepo",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "test": "lerna run test --stream",
+    "test:coverage": "npx lerna run test --stream -- --coverage",
+    "merge-coverage": "node scripts/merge-lcov.js",
+    "start": "npx lerna run start --parallel",
+    "build": "npx lerna run build",
+    "clean": "npx lerna run clean",
+    "sonar": "sonarqube-scanner"
+  },
+  "devDependencies": {
+    "lerna": "^9.0.0"
+  }
+}
