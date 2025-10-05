@@ -1,46 +1,115 @@
-# Getting Started with Create React App
+# Design Platform
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A comprehensive design system and component library built for microfrontend architectures. This platform provides reusable UI components, icons, and styling utilities to ensure consistency across applications.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Reusable Components**: Pre-built, customizable React components
+- **TypeScript Support**: Fully typed for better developer experience
+- **Microfrontend Ready**: Designed to work seamlessly in microfrontend setups
+- **Icon Library**: Collection of SVG icons for common use cases
+- **Theming**: Consistent styling and theming capabilities
 
-### `npm start`
+## Available Components
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Buttons
+- [Button](./docs/Button.md) - Versatile button component with multiple styles, sizes, and icon support
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Installation
 
-### `npm test`
+This package is part of a Lerna monorepo. To install dependencies for all packages:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+yarn install
+```
 
-### `npm run build`
+## Development
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Running the Showcase App
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To start the development server and view component examples:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+cd packages/design-platform
+yarn start
+```
 
-### `npm run eject`
+This will start the webpack dev server on `http://localhost:3000`.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Building
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+To build the design system for production:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```bash
+cd packages/design-platform
+yarn build
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Serving the Built App
 
-## Learn More
+After building, you can serve the static files:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+cd packages/design-platform
+yarn serve
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+This serves the built files on `http://localhost:3001`.
+
+## Usage in Your Application
+
+### Importing Components
+
+```tsx
+import { Button } from 'design-platform/components/Button';
+```
+
+### Using Icons
+
+Icons are available in the assets folder:
+
+```tsx
+import ReactSVG from 'react-svg';
+import cartIcon from 'design-platform/assets/icons/cart.svg';
+
+<ReactSVG src={cartIcon} />
+```
+
+## Project Structure
+
+```
+packages/design-platform/
+├── src/
+│   ├── components/     # Reusable UI components
+│   ├── assets/         # Icons and static assets
+│   └── docs/           # Component documentation
+├── public/             # Static files for the showcase app
+├── docs/               # Markdown documentation
+└── dist/               # Built output
+```
+
+## Contributing
+
+1. Follow the existing code style and patterns
+2. Add tests for new components
+3. Update documentation in the `docs/` folder
+4. Ensure TypeScript types are properly defined
+
+## Scripts
+
+- `yarn start` - Start development server
+- `yarn build` - Build for production
+- `yarn serve` - Serve built files
+- `yarn clean` - Clean build directory
+
+## Technologies
+
+- React 19
+- TypeScript
+- Webpack
+- CSS Modules
+- Lerna (for monorepo management)
+
+## License
+
+This project is private and proprietary.
