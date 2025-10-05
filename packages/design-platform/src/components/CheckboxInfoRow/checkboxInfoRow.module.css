@@ -1,0 +1,27 @@
+.checkboxInfoRow {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    cursor: pointer;
+}
+
+.leftSection {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.leftSection input {
+    width: 18px;
+    height: 18px;
+}
+
+.title {
+    font-size: 14px;
+}
+
+.description {
+    font-size: 14px;
+}
